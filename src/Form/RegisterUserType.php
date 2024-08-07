@@ -19,13 +19,19 @@ class RegisterUserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email', EmailType::class , [
+            ->add('lastName', TextType::class, [
+                "label" => "Nom",
+            ])
+            ->add('firstName', TextType::class, [
+                "label" => "Prenom",
+            ])
+            ->add('email', EmailType::class, [
                 "label" => "E-mail",
             ])
-            ->add("plainPassword" , RepeatedType::class ,[
+            ->add("plainPassword", RepeatedType::class, [
                 'type' => PasswordType::class,
                 "first_options" => [
-                    "label" => "Entrer votre mot de passe",
+                    "label" => "Votre mot de passe",
                     "hash_property_path" => "password",
                 ],
                 "second_options" => [
@@ -33,19 +39,12 @@ class RegisterUserType extends AbstractType
                 ],
                 "mapped" => false,
             ])
-            ->add('lastName' , TextType::class , [
-                "label" => "Entrer Nom",
-            ])
-            ->add('firstName' , TextType::class , [
-                "label" => "Entrer Prenom",
-            ])
-            ->add("save" , SubmitType::class ,[
+            ->add("save", SubmitType::class, [
                 "label" => "Enregistrer",
                 "attr" => [
-                    "class" => "btn btn-secondary"
+                    "class" => "btn btn-primary"
                 ]
-            ]);
-        ;
+            ]);;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

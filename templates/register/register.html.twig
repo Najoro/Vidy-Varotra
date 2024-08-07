@@ -1,9 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription{% endblock %}
+{% block title %}Inscription
+{% endblock %}
 
 {% block main %}
-    <div class="container mt-5">
-        <h1>Inscription</h1>
-        {{form(RegisterForm)}}
+	<div class="container mt-5">
+		<h1>Inscription</h1>
+		<div class="register-form">
+			{{form_start(RegisterForm, {attr : {class : "form-control"}})}}
+			<div class="row">
+				<div class="col-md-6">{{form_row(RegisterForm.lastName)}}</div>
+				<div class="col-md-6">{{form_row(RegisterForm.firstName)}}</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">{{form_row(RegisterForm.email)}}</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">{{form_row(RegisterForm.plainPassword)}}</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">{{form_row(RegisterForm.save)}}</div>
+			</div>
+			{{form_end(RegisterForm)}}
+		</div>
+	</div>
 {% endblock %}
+
