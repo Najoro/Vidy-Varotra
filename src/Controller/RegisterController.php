@@ -12,7 +12,6 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class RegisterController extends AbstractController
 {
-        
 
     public function __construct(private EntityManagerInterface $em) {
         $this->em = $em;
@@ -34,7 +33,7 @@ class RegisterController extends AbstractController
 
 
     #[Route("/inscription/save" , name : "user_save")]    
-    public function userSave(Request $request, EntityManagerInterface $entityManagerInterface) {
+    public function userSave(Request $request) {
         $user = new User();
 
         $form = $this->createForm(RegisterUserType::class, $user, [
@@ -44,9 +43,9 @@ class RegisterController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) { 
             
-            $entityManagerInterface->persist($user);
-            $entityManagerInterface->flush();
-            
+            $this->em->persist($user);
+            $this->em->flush();
+            $this->addFlash("success" , "Ajout d'un user avec Success");
             return $this->redirectToRoute('home');
         }   
         

@@ -1,0 +1,9 @@
+<div class="flash-message m-2 w-100 d-flex justify-content-center text-center align-content-center position-fixed">
+	<div class="w-50">
+		{% for type , message in app.flashes %}
+			<div class="alert alert-{{type}}">
+				{{message | join(".")}}
+			</div>
+		{% endfor %}
+	</div>
+</div>
