@@ -48,7 +48,7 @@ class RegisterUserType extends AbstractType
                 "attr" => [
                     "class" => "btn btn-primary"
                 ]
-            ]);;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

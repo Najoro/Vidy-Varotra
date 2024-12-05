@@ -1,8 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AccountController!{% endblock %}
+{% block title "espace de l'utilisateur"%}
 
 {% block main %}
-    <h1>Acount page</h1>
-    <a href="{{path("user_logout")}}">Deconnecter</a>
+	<div class="container mt-5">
+		<h2 class="mb-4 text-bg-light p-2 text-center">Espace Membre</h2>
+		<div class="row">
+			<div class="col-3 bg-light">
+				{% include "account/menu.html.twig" %}
+			</div>
+			<div class="col-8">
+				{% block main_account %}
+					<h4>Mes Commande</h4>
+				{% endblock %}
+			</div>
+		</div>
+	</div>
 {% endblock %}
+
