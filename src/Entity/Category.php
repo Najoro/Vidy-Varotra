@@ -35,6 +35,11 @@ class Category
         $this->setCreatedAt(new \DateTime('now'));
         $this->products = new ArrayCollection();
     }
+    
+    public function __toString()
+    {
+        return $this->name;
+    }
 
     public function getId(): ?int
     {
