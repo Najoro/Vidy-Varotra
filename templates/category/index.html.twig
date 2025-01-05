@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block main %}
+	<div class="container my-5">
+		<h3>{{ category.name }}</h3>
+		<p>Cette categories contient
+			{{ category.products| length }}
+			{% if category.products | length > 1 %}
+                produits
+                {% else %}
+                produit
+            {% endif %}
+            disponible
+        </p>
+
+		<div class="row">
+			{% for product in category.products %}
+                <div class="card m-2 col-md-3 text-center">
+				    <a href="{{path('product_index', {slug : product.slug})}}">
+                        <img src="/image/{{product.image}}" class="card-img-top" alt="{{product.name}}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{product.name}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted ">{{product.price}}</h6>
+                        </div>
+                    </a>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+{% endblock %}
