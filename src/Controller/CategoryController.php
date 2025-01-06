@@ -21,6 +21,7 @@ class CategoryController extends AbstractController
     {
         $categoryRep = $this->em->getRepository(Category::class);
         $category = $categoryRep->findOneBySlug($slug);
+        
         return $this->render('category/index.html.twig', [
             'category' => $category,
         ]);
