@@ -1,0 +1,39 @@
+{% block drowpdown_menu %}
+	<div class="dropdown-center">
+		<button class="btn text-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+			Categories
+		</button>
+		<ul class="dropdown-menu">
+			{% for category in AllCategory %}
+				<li>
+					<a class="dropdown-item" href="{{ url('category_index',{slug: category.slug}) }}">{{category.name}}</a>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+{% endblock %}
+
+{% block user %}
+	{% if app.user %}
+		<a href="{{path('account_index')}}">
+			<i class="fa-solid fa-user m-1"></i>
+			<strong>{{app.user.lastName}}</strong>
+		</a>
+	{% else %}
+		<a href="{{path('user_login')}}">
+			<i class="fa-solid fa-user"></i>
+		</a>
+	{% endif %}
+	<a href="">
+		<i class="fa-solid fa-cart-shopping"></i>
+	</a>
+{% endblock %}
+
+{% block main_menu %}
+	<ul class="navbar-nav me-auto mb-2 mb-md-0">
+		<li class="nav-item">
+			<a class="nav-link active" aria-current="page" href="{{path('home')}}">Home</a>
+		</li>
+	</ul>
+{% endblock %}
+
