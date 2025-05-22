@@ -1,14 +1,22 @@
-<ul class="nav flex-column menu-account">
-	<li class="nav-item">
-		<a class="nav-link {{app.current_route == "account_index"? 'active-menu'}}" href="{{path('account_index')}}">Mes Commande</a>
-	</li>
-	<li class="nav-item">
-		<a class="nav-link " href="#">Mes Adresses</a>
-	</li>
-	<li class="nav-item">
-		<a class="nav-link {{app.current_route == "user_change_password"? 'active-menu'}}" href="{{path("user_change_password")}}">Changer le mot de passe</a>
-	</li>
-	<li class="nav-item">
-		<a class="nav-link fw-bold btn text-bg-danger m-2 " href="{{path("user_logout")}}">Deconnecter</a>
-	</li>
+<ul class="list-group shadow-sm">
+    <li class="list-group-item {% if app.current_route == 'account_index' %}active{% endif %}">
+        <a class="nav-link text-decoration-none text-dark d-flex align-items-center {% if app.current_route == 'account_index' %}text-white{% endif %}" href="{{ path('account_index') }}">
+            <i class="fas fa-box me-2"></i> Mes Commandes
+        </a>
+    </li>
+    <li class="list-group-item">
+        <a class="nav-link text-dark d-flex align-items-center" href="#">
+            <i class="fas fa-map-marker-alt me-2"></i> Mes Adresses
+        </a>
+    </li>
+    <li class="list-group-item {% if app.current_route == 'user_change_password' %}active{% endif %}">
+        <a class="nav-link text-decoration-none d-flex align-items-center {% if app.current_route == 'user_change_password' %}text-white{% else %}text-dark{% endif %}" href="{{ path('user_change_password') }}">
+            <i class="fas fa-key me-2"></i> Changer le mot de passe
+        </a>
+    </li>
+    <li class="list-group-item text-center">
+        <a class="btn btn-outline-danger w-100 mt-2" href="{{ path('user_logout') }}">
+            <i class="fas fa-sign-out-alt me-2"></i> Se déconnecter
+        </a>
+    </li>
 </ul>
